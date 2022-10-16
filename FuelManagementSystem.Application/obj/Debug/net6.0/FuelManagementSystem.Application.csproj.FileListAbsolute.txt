@@ -1,0 +1,15 @@
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\bin\Debug\net6.0\FuelManagementSystem.Application.deps.json
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\bin\Debug\net6.0\FuelManagementSystem.Application.dll
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\bin\Debug\net6.0\FuelManagementSystem.Application.pdb
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\bin\Debug\net6.0\FuelManagementSystem.BL.dll
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\bin\Debug\net6.0\FuelManagementSystem.BL.pdb
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\FuelManagementSystem.Application.csproj.AssemblyReference.cache
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\FuelManagementSystem.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\FuelManagementSystem.Application.AssemblyInfoInputs.cache
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\FuelManagementSystem.Application.AssemblyInfo.cs
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\FuelManagementSystem.Application.csproj.CoreCompileInputs.cache
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\FuelManagementSystem.Application.csproj.CopyComplete
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\FuelManagementSystem.Application.dll
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\refint\FuelManagementSystem.Application.dll
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\FuelManagementSystem.Application.pdb
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Application\obj\Debug\net6.0\ref\FuelManagementSystem.Application.dll
