@@ -1,7 +1,35 @@
+using FuelManagementSystem.Application.Interfaces;
+using FuelManagementSystem.Application.Services;
+using FuelManagementSystem.BL.Interfaces;
 using FuelManagementSystem.BL.Services;
-using FuelManagementSystem.DbModelSettings;
+using FuelManagementSystem.Data.Repository;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Cors configuration
+builder.Services.AddCors(context =>
+{
+    context.AddPolicy("AllowCors", opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+
+// Json
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options => 
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+    .AddNewtonsoftJson(op=>op.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
+
+// DependencyInjection
+#region User
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+#endregion
+
+#region FuelStation
+builder.Services.AddTransient<IFuelStationService, FuelStationService>();
+builder.Services.AddTransient<IFuelStationRepository, FuelStationRepository>();
+#endregion
 
 // Add services to the container.
 
@@ -10,10 +38,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDb"));
-builder.Services.AddSingleton<MongoDbService>();
-
 var app = builder.Build();
+
+app.UseCors("AllowCors");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

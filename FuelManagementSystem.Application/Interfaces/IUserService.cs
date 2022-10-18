@@ -1,16 +1,13 @@
 ﻿using FuelManagementSystem.BL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MongoDB.Bson;
 
 namespace FuelManagementSystem.BL.Interfaces
 {
     public interface IUserService
     {
-        Task UpdateUserArrivalTime(Guid id, DateTime arrivalTime);
-        Task UpdateUserDepartureTime(Guid id, DateTime arrivalTime);
-
+        Task UpdateUserArrivalTime(ObjectId userId, ObjectId fuelStationId, DateTime arrivalTime);
+        Task UpdateUserDepartureTime(ObjectId id, ObjectId fuelStationId, DateTime departureTime);
+        IEnumerable<User> GetUsers();
+        Task<TimeSpan> GetUserQueueWaitingDuration(ObjectId userObjectId, ObjectId fuelStationId);
     }
 }

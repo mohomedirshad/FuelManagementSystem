@@ -1,9 +1,4 @@
 ﻿using FuelManagementSystem.BL.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuelManagementSystem.BL.Entities
 {
@@ -11,30 +6,21 @@ namespace FuelManagementSystem.BL.Entities
     {
         public string Name { get; set; }
         public UserType UserType { get; set; }
-        public DateTime ArrivalTime { get; set; }
-        public DateTime DepartureTime { get; set; }
+        public string ArrivalTime { get; set; }
+        public string DepartureTime { get; set; }
         public bool IsLoggedIn { get; set; }
         public VehicleType VehicleType { get; set; }
 
         public void UpdateArrivalTime(DateTime arrivalTime)
         {
-            ArrivalTime = arrivalTime;
+            ArrivalTime = arrivalTime.ToString("MM/dd/yyyy h:mm tt");
         }
 
         public void UpdateDepartureTime(DateTime departureTime)
         {
-            DepartureTime = departureTime;
+            DepartureTime = departureTime.ToString("MM/dd/yyyy h:mm tt");
         }
 
-        public void SetStatusToLogIn()
-        {
-            IsLoggedIn = true;
-        }
-
-        public void SetStatusToLogOut()
-        {
-            IsLoggedIn = false;
-        }
     }
 
 }

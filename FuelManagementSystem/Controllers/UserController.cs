@@ -1,9 +1,10 @@
 ﻿using FuelManagementSystem.BL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 
 namespace FuelManagementSystem.Controllers
 {
-    [Route("api/user")]
+    [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -14,26 +15,54 @@ namespace FuelManagementSystem.Controllers
             _userService = userService;
         }
 
-        [HttpPut("arrivaltime/{id}")]
-        public IActionResult UpdateUserArrivalTime(Guid id, DateTime arrivalTime)
+        [HttpPut("arrivaltime/{userid}/fuelstation/{fuelstationid}")]
+        public IActionResult UpdateUserArrivalTime(string userid, string fuelstationid, DateTime arrivalTime)
         {
-            if (id == Guid.Empty)
+            var userObjectId = ObjectId.Parse(userid);
+            var fuelStationObjectId = ObjectId.Parse(fuelstationid);
+            if (userObjectId == ObjectId.Empty)
             {
                 return BadRequest("Invalid User Id");
             }
-            _userService.UpdateUserArrivalTime(id, arrivalTime);
+            if (fuelStationObjectId == ObjectId.Empty)
+            {
+                return BadRequest("Invalid fuel station Id");
+            }
+            _userService.UpdateUserArrivalTime(userObjectId, fuelStationObjectId, arrivalTime);
             return NoContent();
         }
 
-        [HttpPut("departuretime/{id}")]
-        public IActionResult UpdateUserDepartureTime(Guid id, DateTime departureTime)
+        [HttpPut("departuretime/{userid}/fuelstation/{fuelstationid}")]
+        public IActionResult UpdateUserDepartureTime(string userid, string fuelstationid, DateTime departureTime)
         {
-            if (id == Guid.Empty)
+            var objectId = ObjectId.Parse(userid);
+            var fuelStationObjectId = ObjectId.Parse(fuelstationid);
+            if (objectId == ObjectId.Empty)
             {
                 return BadRequest("Invalid User Id");
             }
-            _userService.UpdateUserDepartureTime(id, departureTime);
+            if (fuelStationObjectId == ObjectId.Empty)
+            {
+                return BadRequest("Invalid fuel station Id");
+            }
+            _userService.UpdateUserDepartureTime(objectId, fuelStationObjectId, departureTime);
             return NoContent();
+        }
+
+        [HttpGet]
+        public IActionResult GetUsers()
+        {
+            var users = _userService.GetUsers();
+            return Ok(users);
+        }
+
+        [HttpGet("duration/{userId}/fuelstation/{fuelStationId}")]
+        public async Task<IActionResult> GetUsersWaitingDurationInFuelStationQueue(string userId, string fuelStationId)
+        {
+            var userObjectId = ObjectId.Parse(userId);
+            var fuelStationObjectId = ObjectId.Parse(fuelStationId);
+            var duration = await _userService.GetUserQueueWaitingDuration(userObjectId,fuelStationObjectId);
+            return Ok(duration);
         }
     }
 }

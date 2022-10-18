@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,18 +12,18 @@ namespace FuelManagementSystem.BL.Entities
     /// </summary>
     public class BaseEntity
     {
-        public Guid Id { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public DateTime UpdatedOn { get; set; }
+        public ObjectId Id { get; set; }
+        public string CreatedOn { get; set; }
+        public string UpdatedOn { get; set; }
 
         public void SetCreatedDate()
         {
-            CreatedOn = DateTime.Now;
+            CreatedOn = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
         }
 
         public void SetUpdatedDate()
         {
-            UpdatedOn = DateTime.Now;
+            UpdatedOn = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
         }
     }
 }

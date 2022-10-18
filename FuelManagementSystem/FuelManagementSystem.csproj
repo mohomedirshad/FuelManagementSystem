@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FuelManagementSystem.Application\FuelManagementSystem.Application.csproj" />
     <ProjectReference Include="..\FuelManagementSystem.BL\FuelManagementSystem.BL.csproj" />
+    <ProjectReference Include="..\FuelManagementSystem.Data\FuelManagementSystem.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,19 +1,39 @@
 ﻿using FuelManagementSystem.BL.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuelManagementSystem.BL.Entities
 {
     public class FuelStation: BaseEntity
     {
         public string Location { get; set; }
-        public bool FuelAvailabilityStatus { get; set; }
-        public DateTime FuelArrivalTime { get; set; }
-        public DateTime FuelFinishTime { get; set; }
+        public FuelStatus FuelAvailabilityStatus { get; set; }
+        public string FuelArrivalTime { get; set; }
+        public string FuelFinishTime { get; set; }
         public FuelType FuelType { get; set; }
-        public List<User> Users { get; set; } = new List<User>();   // Not sure, may need to remove depending on the usage
+        public List<string> UserIds { get; set; } = new List<string>();
+
+        public void UpdateFuelAvailabilityStatus(FuelStatus fuelAvailabilityStatus)
+        {
+            FuelAvailabilityStatus = fuelAvailabilityStatus;
+        }
+
+        public void SetFuelArrivalTime(DateTime arrivalTime)
+        {
+            FuelArrivalTime = arrivalTime.ToString("MM/dd/yyyy h:mm tt");
+        }
+
+        public void SetFuelFinishTime(DateTime finishTime)
+        {
+            FuelFinishTime = finishTime.ToString("MM/dd/yyyy h:mm tt");
+        }
+
+        public void AddUserToFuelStationQueue(string userId)
+        {
+            UserIds.Add(userId);
+        }
+
+        public void RemoveUserFromFuelStationQueue(string userId)
+        {
+            UserIds.Remove(userId);
+        }
     }
 }
