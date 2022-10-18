@@ -1,0 +1,17 @@
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\bin\Debug\net6.0\FuelManagementSystem.Data.deps.json
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\bin\Debug\net6.0\FuelManagementSystem.Data.dll
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\bin\Debug\net6.0\FuelManagementSystem.Data.pdb
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\bin\Debug\net6.0\FuelManagementSystem.Application.dll
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\bin\Debug\net6.0\FuelManagementSystem.BL.dll
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\bin\Debug\net6.0\FuelManagementSystem.Application.pdb
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\bin\Debug\net6.0\FuelManagementSystem.BL.pdb
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\FuelManagementSystem.Data.csproj.AssemblyReference.cache
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\FuelManagementSystem.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\FuelManagementSystem.Data.AssemblyInfoInputs.cache
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\FuelManagementSystem.Data.AssemblyInfo.cs
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\FuelManagementSystem.Data.csproj.CoreCompileInputs.cache
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\FuelManagementSystem.Data.csproj.CopyComplete
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\FuelManagementSystem.Data.dll
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\refint\FuelManagementSystem.Data.dll
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\FuelManagementSystem.Data.pdb
+C:\Users\mohom\Downloads\EAD Assignment\FuelManagementSystem\FuelManagementSystem.Data\obj\Debug\net6.0\ref\FuelManagementSystem.Data.dll
