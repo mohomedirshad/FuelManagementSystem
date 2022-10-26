@@ -1,4 +1,5 @@
 ﻿using FuelManagementSystem.BL.Entities;
+using FuelManagementSystem.Data.Dto;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace FuelManagementSystem.Application.Interfaces
         void UpdateFuelStation(FuelStation fuelStation);
         Task<List<FuelStation>> SearchFuelStation(string location);
         Task CreateFuelStation(FuelStation fuelStation);
-        Task<int> FuelStationQueueUsersCount(ObjectId fuelStationId);
+        Task<UserCountDto> FuelStationQueueUsersCount(ObjectId fuelStationId);
+        Task<List<FuelStation>> GetFuelStations();
     }
 }

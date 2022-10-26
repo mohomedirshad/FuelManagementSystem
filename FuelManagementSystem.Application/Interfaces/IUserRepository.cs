@@ -1,4 +1,5 @@
-﻿using FuelManagementSystem.BL.Entities;
+﻿using FuelManagementSystem.Application.Dto;
+using FuelManagementSystem.BL.Entities;
 using MongoDB.Bson;
 
 namespace FuelManagementSystem.Application.Interfaces
@@ -9,5 +10,7 @@ namespace FuelManagementSystem.Application.Interfaces
         Task<User> GetUserById(ObjectId id);
         IEnumerable<User> GetUsers();
         Task<TimeSpan> GetUsersWaitingTimeDuration(ObjectId userObjectId, ObjectId fuelStationId);
+        Task AddNewUser(User user);
+        Task<User> ValidateUser(LoginDto loginDto);
     }
 }

@@ -28,36 +28,57 @@ namespace FuelManagementSystem.Controllers
             if (fuelStationObjectId == ObjectId.Empty)
             {
                 return BadRequest("Invalid fuel station Id");
+            }            
+
+            try
+            {
+                await _fuelStationService.UpdateAvailabilityFuelStatus(fuelStationObjectId, fuelAvailabilityStatus);
+                return Ok(true);
             }
-            await _fuelStationService.UpdateAvailabilityFuelStatus(fuelStationObjectId, fuelAvailabilityStatus);
-            return NoContent();
+            catch (Exception ex)
+            {
+                throw new Exception("Something went wrong");
+            }
         }
 
         [HttpPut("fuel-arrival-time/{fuelstationid}")]
-        public async Task<IActionResult> UpdateFuelArrivalTime(string fuelstationid, DateTime fuelArrivalTime)
+        public async Task<IActionResult> UpdateFuelArrivalTime(string fuelstationid, string fuelArrivalTime)
         {
             var fuelStationObjectId = ConvertToObjectId(fuelstationid);
             if (fuelStationObjectId == ObjectId.Empty)
             {
                 return BadRequest("Invalid fuel station Id");
             }
-            await _fuelStationService.UpdateFuelArrivalTime(fuelStationObjectId, fuelArrivalTime);
-            return NoContent();
+
+            try
+            {
+                await _fuelStationService.UpdateFuelArrivalTime(fuelStationObjectId, fuelArrivalTime);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Something went wrong");
+            }
         }
 
         [HttpPut("fuel-finish-time/{fuelstationid}")]
-        public async Task<IActionResult> UpdateFuelFinishTime(string fuelstationid, DateTime fuelFinishTime)
+        public async Task<IActionResult> UpdateFuelFinishTime(string fuelstationid, string fuelFinishTime)
         {
             var fuelStationObjectId = ConvertToObjectId(fuelstationid);
             if (fuelStationObjectId == ObjectId.Empty)
             {
                 return BadRequest("Invalid fuel station Id");
             }
-            await _fuelStationService.UpdateFuelFinishTime(fuelStationObjectId, fuelFinishTime);
-            return NoContent();
+            try
+            {
+                await _fuelStationService.UpdateFuelFinishTime(fuelStationObjectId, fuelFinishTime);
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Something went wrong");
+            }
         }
-
-        // create
 
         [HttpGet("location")]
         public  async Task<IActionResult>SearchLocation(string location)
@@ -76,9 +97,16 @@ namespace FuelManagementSystem.Controllers
         {
             var fuelStationObjectId = ConvertToObjectId(fuelStationId);
             var userObjectId = ObjectId.Parse(userId);
-            
-            await _fuelStationService.AddUserToFuelStationQueue(userObjectId,fuelStationObjectId);
-            return NoContent();
+
+            try
+            {
+                await _fuelStationService.AddUserToFuelStationQueue(userObjectId,fuelStationObjectId);
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("something went wrong!");
+            }
         }
 
         [HttpPut("removefromqueue")]
@@ -87,8 +115,16 @@ namespace FuelManagementSystem.Controllers
             ObjectId fuelStationObjectId = ConvertToObjectId(fuelStationId);
             var userObjectId = ObjectId.Parse(userId);
 
-            await _fuelStationService.RemoveUserFromFuelStationQueue(userObjectId, fuelStationObjectId);
-            return NoContent();
+            try
+            {
+                await _fuelStationService.RemoveUserFromFuelStationQueue(userObjectId, fuelStationObjectId);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("something went wrong!");
+            }
+            
         }
 
         // get count of users in a fuel station
@@ -98,6 +134,21 @@ namespace FuelManagementSystem.Controllers
             var fuelStationObjectId = ConvertToObjectId(fuelStationId);
             var usersCount = await _fuelStationService.FuelStationQueueUsersCount(fuelStationObjectId);
             return Ok(usersCount);
+        }
+
+        [HttpGet("{fuelStationId}")]
+        public async Task<IActionResult> GetFuelStationById(string fuelStationId)
+        {
+            var fuelStationObjectId = ConvertToObjectId(fuelStationId);
+            var fuelStation = await _fuelStationService.GetFuelStationById(fuelStationObjectId);
+            return Ok(fuelStation);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetFuelStations()
+        {            
+            var fuelStation = await _fuelStationService.GetFuelStations();
+            return Ok(fuelStation);
         }
     }
 }

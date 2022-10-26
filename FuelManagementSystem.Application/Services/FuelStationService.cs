@@ -1,6 +1,7 @@
 ﻿using FuelManagementSystem.Application.Interfaces;
 using FuelManagementSystem.BL.Entities;
 using FuelManagementSystem.BL.Enums;
+using FuelManagementSystem.Data.Dto;
 using MongoDB.Bson;
 
 namespace FuelManagementSystem.Application.Services
@@ -29,7 +30,7 @@ namespace FuelManagementSystem.Application.Services
             }
         }
 
-        public async Task UpdateFuelArrivalTime(ObjectId fuelStationId, DateTime fuelArrivalTime)
+        public async Task UpdateFuelArrivalTime(ObjectId fuelStationId, string fuelArrivalTime)
         {
             var fuelStation = await _fuelStationRepository.GetFuelStationById(fuelStationId);
 
@@ -42,7 +43,7 @@ namespace FuelManagementSystem.Application.Services
             }
         }
 
-        public async Task UpdateFuelFinishTime(ObjectId fuelStationId, DateTime fuelFinishTime)
+        public async Task UpdateFuelFinishTime(ObjectId fuelStationId, string fuelFinishTime)
         {
             var fuelStation = await _fuelStationRepository.GetFuelStationById(fuelStationId);
 
@@ -92,7 +93,7 @@ namespace FuelManagementSystem.Application.Services
             return await _fuelStationRepository.SearchFuelStation(location);
         }
 
-        public async Task<int> FuelStationQueueUsersCount(ObjectId fuelStationId)
+        public async Task<UserCountDto> FuelStationQueueUsersCount(ObjectId fuelStationId)
         {
             var fuelStation = await _fuelStationRepository.GetFuelStationById(fuelStationId);
 
@@ -101,6 +102,16 @@ namespace FuelManagementSystem.Application.Services
                 throw new Exception("Fuel station is not found");
             }
             return await _fuelStationRepository.FuelStationQueueUsersCount(fuelStation.Id);
+        }
+
+        public async Task<FuelStation> GetFuelStationById(ObjectId id)
+        {
+            return await _fuelStationRepository.GetFuelStationById(id);
+        }
+
+        public async Task<List<FuelStation>> GetFuelStations()
+        {
+            return await _fuelStationRepository.GetFuelStations();
         }
     }
 }

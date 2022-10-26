@@ -1,4 +1,5 @@
-﻿using FuelManagementSystem.BL.Interfaces;
+﻿using FuelManagementSystem.Application.Dto;
+using FuelManagementSystem.BL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 
@@ -16,7 +17,7 @@ namespace FuelManagementSystem.Controllers
         }
 
         [HttpPut("arrivaltime/{userid}/fuelstation/{fuelstationid}")]
-        public IActionResult UpdateUserArrivalTime(string userid, string fuelstationid, DateTime arrivalTime)
+        public IActionResult UpdateUserArrivalTime(string userid, string fuelstationid)
         {
             var userObjectId = ObjectId.Parse(userid);
             var fuelStationObjectId = ObjectId.Parse(fuelstationid);
@@ -28,12 +29,12 @@ namespace FuelManagementSystem.Controllers
             {
                 return BadRequest("Invalid fuel station Id");
             }
-            _userService.UpdateUserArrivalTime(userObjectId, fuelStationObjectId, arrivalTime);
+            _userService.UpdateUserArrivalTime(userObjectId, fuelStationObjectId);
             return NoContent();
         }
 
         [HttpPut("departuretime/{userid}/fuelstation/{fuelstationid}")]
-        public IActionResult UpdateUserDepartureTime(string userid, string fuelstationid, DateTime departureTime)
+        public IActionResult UpdateUserDepartureTime(string userid, string fuelstationid)
         {
             var objectId = ObjectId.Parse(userid);
             var fuelStationObjectId = ObjectId.Parse(fuelstationid);
@@ -45,7 +46,7 @@ namespace FuelManagementSystem.Controllers
             {
                 return BadRequest("Invalid fuel station Id");
             }
-            _userService.UpdateUserDepartureTime(objectId, fuelStationObjectId, departureTime);
+            _userService.UpdateUserDepartureTime(objectId, fuelStationObjectId);
             return NoContent();
         }
 
@@ -63,6 +64,24 @@ namespace FuelManagementSystem.Controllers
             var fuelStationObjectId = ObjectId.Parse(fuelStationId);
             var duration = await _userService.GetUserQueueWaitingDuration(userObjectId,fuelStationObjectId);
             return Ok(duration);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNewUser(UserRegistrationDto userRegistrationDto)
+        {
+            await _userService.AddNewUser(userRegistrationDto);
+            return Ok(true);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginUser(LoginDto loginDto)
+        {
+            var user = await _userService.ValidateUser(loginDto);
+            if (user is not null)
+            {
+                return Ok(user);
+            }
+            return Unauthorized();
         }
     }
 }

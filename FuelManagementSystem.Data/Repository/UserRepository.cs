@@ -1,8 +1,10 @@
-﻿using FuelManagementSystem.Application.Interfaces;
+﻿using FuelManagementSystem.Application.Dto;
+using FuelManagementSystem.Application.Interfaces;
 using FuelManagementSystem.BL.Entities;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Web.Mvc;
 
 namespace FuelManagementSystem.Data.Repository
 {
@@ -19,6 +21,20 @@ namespace FuelManagementSystem.Data.Repository
         {
             MongoClient client = new(_configuration.GetConnectionString("MongoDbConnection"));
             return client;
+        }
+        public async Task AddNewUser(User user)
+        {
+            var client = GetMongoDbClient();
+            await client.GetDatabase("EAD").GetCollection<User>("users").InsertOneAsync(user);
+        }
+
+        public async Task<User> ValidateUser(LoginDto loginDto)
+        {
+            var client = GetMongoDbClient();
+            var user = await client.GetDatabase("EAD").GetCollection<User>("users")
+                .Find(s=>s.Name == loginDto.Username && s.Password == loginDto.Password)
+                .FirstOrDefaultAsync();
+            return user;
         }
 
         public void UpdateUser(User user)

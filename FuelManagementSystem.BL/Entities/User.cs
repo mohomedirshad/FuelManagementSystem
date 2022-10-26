@@ -8,17 +8,17 @@ namespace FuelManagementSystem.BL.Entities
         public UserType UserType { get; set; }
         public string ArrivalTime { get; set; }
         public string DepartureTime { get; set; }
-        public bool IsLoggedIn { get; set; }
+        public string Password { get; set; }
         public VehicleType VehicleType { get; set; }
 
-        public void UpdateArrivalTime(DateTime arrivalTime)
+        public void UpdateArrivalTime()
         {
-            ArrivalTime = arrivalTime.ToString("MM/dd/yyyy h:mm tt");
+            ArrivalTime = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
         }
 
-        public void UpdateDepartureTime(DateTime departureTime)
+        public void UpdateDepartureTime()
         {
-            DepartureTime = departureTime.ToString("MM/dd/yyyy h:mm tt");
+            DepartureTime = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
         }
 
     }

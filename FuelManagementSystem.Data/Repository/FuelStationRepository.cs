@@ -1,5 +1,6 @@
 ﻿using FuelManagementSystem.Application.Interfaces;
 using FuelManagementSystem.BL.Entities;
+using FuelManagementSystem.Data.Dto;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -55,14 +56,22 @@ namespace FuelManagementSystem.Data.Repository
                 .ToListAsync();
         }
 
-        public async Task<int> FuelStationQueueUsersCount(ObjectId fuelStationId)
+        public async Task<UserCountDto> FuelStationQueueUsersCount(ObjectId fuelStationId)
         {
             var client = GetMongoDbClient();
             var fuelStation = await client.GetDatabase("EAD").GetCollection<FuelStation>("fuelStations")
                 .Find(Builders<FuelStation>.Filter.Eq("Id", fuelStationId))
                 .FirstOrDefaultAsync();
 
-            return fuelStation.UserIds.Count;
+            return new UserCountDto { UsersCount = fuelStation.UserIds.Count };
+        }
+
+        public async Task<List<FuelStation>> GetFuelStations()
+        {
+            var client = GetMongoDbClient();
+            var fuelStations = await client.GetDatabase("EAD").GetCollection<FuelStation>("fuelStations").AsQueryable().ToListAsync();
+            return fuelStations;
+
         }
     }
 }

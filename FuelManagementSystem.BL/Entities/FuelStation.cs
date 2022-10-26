@@ -16,14 +16,14 @@ namespace FuelManagementSystem.BL.Entities
             FuelAvailabilityStatus = fuelAvailabilityStatus;
         }
 
-        public void SetFuelArrivalTime(DateTime arrivalTime)
+        public void SetFuelArrivalTime(string arrivalTime)
         {
-            FuelArrivalTime = arrivalTime.ToString("MM/dd/yyyy h:mm tt");
+            FuelArrivalTime = arrivalTime;
         }
 
-        public void SetFuelFinishTime(DateTime finishTime)
+        public void SetFuelFinishTime(string finishTime)
         {
-            FuelFinishTime = finishTime.ToString("MM/dd/yyyy h:mm tt");
+            FuelFinishTime = finishTime;
         }
 
         public void AddUserToFuelStationQueue(string userId)
