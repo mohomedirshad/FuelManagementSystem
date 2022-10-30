@@ -65,6 +65,7 @@ namespace FuelManagementSystem.BL.Services
                 ArrivalTime = string.Empty,
                 DepartureTime = string.Empty,
                 UpdatedOn = DateTime.Now.ToString("MM/dd/yyyy h:mm tt"),
+                
                 Password = userRegistrationDto.Password,
             };
             

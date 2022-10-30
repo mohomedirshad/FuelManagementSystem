@@ -30,7 +30,7 @@ namespace FuelManagementSystem.Controllers
                 return BadRequest("Invalid fuel station Id");
             }
             _userService.UpdateUserArrivalTime(userObjectId, fuelStationObjectId);
-            return NoContent();
+            return Ok(new { userArrivalTime = "Updated" });
         }
 
         [HttpPut("departuretime/{userid}/fuelstation/{fuelstationid}")]
@@ -47,7 +47,7 @@ namespace FuelManagementSystem.Controllers
                 return BadRequest("Invalid fuel station Id");
             }
             _userService.UpdateUserDepartureTime(objectId, fuelStationObjectId);
-            return NoContent();
+            return Ok(new { userDepartureTime = "Updated" });
         }
 
         [HttpGet]

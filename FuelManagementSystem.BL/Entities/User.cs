@@ -11,6 +11,7 @@ namespace FuelManagementSystem.BL.Entities
         public string Password { get; set; }
         public VehicleType VehicleType { get; set; }
 
+
         public void UpdateArrivalTime()
         {
             ArrivalTime = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");

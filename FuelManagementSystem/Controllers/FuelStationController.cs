@@ -53,7 +53,7 @@ namespace FuelManagementSystem.Controllers
             try
             {
                 await _fuelStationService.UpdateFuelArrivalTime(fuelStationObjectId, fuelArrivalTime);
-                return NoContent();
+                return Ok(new { arrivalTime = "Updated" });
             }
             catch (Exception ex)
             {
@@ -72,7 +72,7 @@ namespace FuelManagementSystem.Controllers
             try
             {
                 await _fuelStationService.UpdateFuelFinishTime(fuelStationObjectId, fuelFinishTime);
-                return Ok(true);
+                return Ok(new { finishTime = "Updated" });
             }
             catch (Exception ex)
             {
@@ -92,6 +92,10 @@ namespace FuelManagementSystem.Controllers
             return Ok(locations);
         }
 
+        // how to send a response in a json format... create a class and send.
+
+        // this sending result should be json format in each responses.
+
         [HttpPut("jointoqueue")]
         public async Task<IActionResult> AddUserToFuelStationQueue(string userId, string fuelStationId)
         {
@@ -101,7 +105,7 @@ namespace FuelManagementSystem.Controllers
             try
             {
                 await _fuelStationService.AddUserToFuelStationQueue(userObjectId,fuelStationObjectId);
-                return Ok(true);
+                return Ok(new {Join = "Joined"});
             }
             catch (Exception ex)
             {
@@ -118,7 +122,7 @@ namespace FuelManagementSystem.Controllers
             try
             {
                 await _fuelStationService.RemoveUserFromFuelStationQueue(userObjectId, fuelStationObjectId);
-                return NoContent();
+                return Ok(new { Exit = "Exit" });
             }
             catch (Exception ex)
             {
